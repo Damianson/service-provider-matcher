@@ -38,5 +38,4 @@ RUN cd /app/backend && python seed.py
 EXPOSE 8080
 
 # Start production gunicorn server binding to Cloud Run $PORT
-CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 4 --timeout 120 backend.app:app
-
+CMD exec gunicorn --bind 0.0.0.0:${PORT:-8080} --workers 2 --threads 4 --timeout 120 --chdir backend app:app
